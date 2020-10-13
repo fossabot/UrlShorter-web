@@ -33,15 +33,15 @@
 
 <script>
 export default {
-  name: "App",
+  name: 'App',
 
   data: () => ({
     //
     drawer: false,
     items: [
-      { title: "Shorter", icon: "mdi-content-cut",link:'/' },
-      { title: "Delete", icon: "mdi-delete",link:'/delete' },
-      { title: "About", icon: "mdi-help-box",link:'/about' },
+      { title: 'Shorter', icon: 'mdi-content-cut', link: '/' },
+      { title: 'Delete', icon: 'mdi-delete', link: '/delete' },
+      { title: 'About', icon: 'mdi-help-box', link: '/about' },
     ],
   }),
 };

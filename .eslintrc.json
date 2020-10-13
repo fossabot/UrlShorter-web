@@ -23,6 +23,7 @@
     "rules": {
         "linebreak-style":"off",
         "import/no-unresolved":"off",
+        "import/extensions":"off",
         "no-console":"off",
         "vue/experimental-script-setup-vars":"off"
     }
