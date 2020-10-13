@@ -13,7 +13,7 @@
       </v-app-bar>
       <v-navigation-drawer color="#707C74" v-model="drawer" app dark>
         <v-list dense nav class="py-0">
-          <v-list-item v-for="item in items" :key="item.title" link>
+          <v-list-item v-for="item in items" :key="item.title" link :href="item.link">
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
@@ -39,9 +39,9 @@ export default {
     //
     drawer: false,
     items: [
-      { title: "Dashboard", icon: "mdi-view-dashboard" },
-      { title: "Photos", icon: "mdi-image" },
-      { title: "About", icon: "mdi-help-box" },
+      { title: "Shorter", icon: "mdi-content-cut",link:'/' },
+      { title: "Delete", icon: "mdi-delete",link:'/delete' },
+      { title: "About", icon: "mdi-help-box",link:'/about' },
     ],
   }),
 };
