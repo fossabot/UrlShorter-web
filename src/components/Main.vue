@@ -66,27 +66,34 @@
   </v-container>
 </template>
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import { API_URL } from "@/config.ts";
+import { Component, Vue } from 'vue-property-decorator';
+import { API_URL } from '@/config.ts';
 
 @Component
 export default class Main extends Vue {
-  longUrl: string = "";
-  revokePwd: string = "";
-  shortUrl: string = "";
+  longUrl: string = '';
+
+  revokePwd: string = '';
+
+  shortUrl: string = '';
+
   valid = false;
+
   snackbar = false;
-  rule = [(v: string) => !!v || "Please input the URL!"];
+
+  rule = [(v: string) => !!v || 'Please input the URL!'];
+
   generated = false;
+
   short() {
     if (this.valid) {
       const urlencoded = new URLSearchParams();
-      urlencoded.append("urls", this.longUrl);
+      urlencoded.append('urls', this.longUrl);
       fetch(API_URL, {
-        method: "PUT",
+        method: 'PUT',
         body: urlencoded,
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+          'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
         },
       })
         .then((res) => res.json())
@@ -97,7 +104,7 @@ export default class Main extends Vue {
             this.generated = true;
           }
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.log(error.message);
         });
     }
