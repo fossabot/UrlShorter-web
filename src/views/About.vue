@@ -1,5 +1,17 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <v-container class="flex-column">
+    <About />
+  </v-container>
 </template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import About from '@/components/About.vue'; // @ is an alias to /src
+
+@Component({
+  components: {
+    About,
+  },
+})
+export default class AboutView extends Vue {}
+</script>

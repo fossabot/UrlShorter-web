@@ -28,6 +28,17 @@
     <v-main>
       <router-view></router-view>
     </v-main>
+    <v-footer
+      absolute
+      class="font-weight-medium"
+    >
+      <v-col
+        class="text-center"
+        cols="12"
+      >    Copyright©
+        {{ new Date().getFullYear() }} — <strong><a href="https://blog.gaojianli.me" style="text-decoration: none;color:black">Gaojianli</a></strong>
+      </v-col>
+    </v-footer>
   </v-app>
 </template>
 
@@ -40,8 +51,8 @@ export default {
     drawer: false,
     items: [
       { title: 'Shorter', icon: 'mdi-content-cut', link: '/' },
-      { title: 'Delete', icon: 'mdi-delete', link: '/delete' },
-      { title: 'About', icon: 'mdi-help-box', link: '/about' },
+      { title: 'Revoke', icon: 'mdi-delete', link: '/revoke' },
+      { title: 'About', icon: 'mdi-information', link: '/about' },
     ],
   }),
 };

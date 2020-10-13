@@ -9,21 +9,24 @@ const routes = [
     path: '/',
     name: 'Shorter',
     meta: {
-      title: 'Short-URL Shorter',
+      title: 'Short a URL -URL Shorter',
     },
     component: () => import('../views/Main.vue'),
   },
   {
-    path: '/delete',
-    name: 'Delete',
+    path: '/revoke',
+    name: 'Revoke',
     meta: {
-      title: 'Delete-URL Shorter',
+      title: 'Revoke a URL-URL Shorter',
     },
     component: () => import('../views/Delete.vue'),
   },
   {
     path: '/about',
     name: 'About',
+    meta: {
+      title: 'About-URL Shorter',
+    },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -36,7 +39,7 @@ const router = new VueRouter({
   mode: 'history',
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   /* 路由发生变化修改页面title */
   if (to.meta.title) {
     document.title = to.meta.title;

@@ -1,4 +1,5 @@
-const API_URL = 'API_URL=http://localhost:5000'  //set your backend url here
-export default {
-    API_URL
-}
+/* eslint-disable import/prefer-default-export */
+const API_URL = 'https://u2b.eu'; // Set your backend url here
+export {
+  API_URL,
+};
