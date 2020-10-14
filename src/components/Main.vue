@@ -17,14 +17,6 @@
           clearable
           v-model="longUrl"
         >
-          <template v-slot:prepend>
-            <v-tooltip bottom>
-              <template v-slot:activator="{ on }">
-                <v-icon v-on="on">mdi-help-circle-outline</v-icon>
-              </template>
-              I'm a tooltip
-            </v-tooltip>
-          </template>
           <template v-slot:append v-if="clicked">
             <v-fade-transition leave-absolute>
               <v-progress-circular
