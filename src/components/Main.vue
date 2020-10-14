@@ -16,7 +16,27 @@
           :rules="rule"
           clearable
           v-model="longUrl"
-        ></v-text-field>
+        >
+          <template v-slot:prepend>
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on }">
+                <v-icon v-on="on">mdi-help-circle-outline</v-icon>
+              </template>
+              I'm a tooltip
+            </v-tooltip>
+          </template>
+          <template v-slot:append v-if="clicked">
+            <v-fade-transition leave-absolute>
+              <v-progress-circular
+                v-if="loading"
+                size="24"
+                color="info"
+                indeterminate
+              ></v-progress-circular>
+              <v-icon color="green">mdi-check</v-icon>
+            </v-fade-transition>
+          </template>
+        </v-text-field>
       </v-form>
       <div class="my-2 text-center">
         <v-btn large color="primary" @click="short()">Go！</v-btn>
@@ -48,8 +68,11 @@
           </div>
         </v-card-text>
         <v-card-actions>
-          <v-btn text color="blue lighten-1" v-clipboard:copy="shortUrl"
-          @click="snackbar = true"
+          <v-btn
+            text
+            color="blue lighten-1"
+            v-clipboard:copy="shortUrl"
+            @click="snackbar = true"
             >Copy</v-btn
           >
         </v-card-actions>
@@ -79,6 +102,10 @@ export default class Main extends Vue {
 
   valid = false;
 
+  loading = false;
+
+  clicked = false;
+
   snackbar = false;
 
   rule = [(v: string) => !!v || 'Please input the URL!'];
@@ -87,6 +114,8 @@ export default class Main extends Vue {
 
   short() {
     if (this.valid) {
+      this.loading = true;
+      this.clicked = true;
       const urlencoded = new URLSearchParams();
       urlencoded.append('urls', this.longUrl);
       fetch(API_URL, {
@@ -102,6 +131,7 @@ export default class Main extends Vue {
             this.shortUrl = data?.data?.shortUrl;
             this.revokePwd = data?.data?.revokePwd;
             this.generated = true;
+            this.loading = false;
           }
         })
         .catch((error) => {
